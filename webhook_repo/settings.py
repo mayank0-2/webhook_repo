@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'webhookApi',
+    'webhook_repo'
 ]
 
 MIDDLEWARE = [
@@ -75,8 +77,12 @@ WSGI_APPLICATION = 'webhook_repo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': "webhook_project",
+        'ENFORCE_SCHEMA': False,
+        'CLINET': {
+            'host': 'mongodb://admin:password@172.17.0.2:27017/'
+        }
     }
 }
 
